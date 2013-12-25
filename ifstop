@@ -215,11 +215,12 @@ def main(stdscr):
         ifaces.rescan()
 
 if __name__ == "__main__":
-        if sys.argv[1] == '--help':
-            print 'Display top of interfaces (no command-line options, except --help and --version)'
-            sys.exit(0)
-        if sys.argv[1] =='--version':
+    if len(sys.argv) > 1:
+        if sys.argv[1] == '--version':
             print 'ifstop version %s'%VERSION
+            sys.exit(0)
+        else:
+            print 'Display top of interfaces (no command-line options except --version)'
             sys.exit(0)
         try:
             curses.wrapper(main)
