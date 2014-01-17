@@ -222,8 +222,8 @@ if __name__ == "__main__":
         else:
             print 'Display top of interfaces (no command-line options except --version)'
             sys.exit(0)
-        try:
-            curses.wrapper(main)
-        except KeyboardInterrupt:
-            pass
+    try:
+        curses.wrapper(main)
+    except KeyboardInterrupt:
+        pass
 
