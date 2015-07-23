@@ -46,12 +46,12 @@ class Stats(dict):
         dict.__init__(self)
         errors=[
             "collisions",
-            "rx_crc_errors", 
-            "rx_dropped", 
-            "rx_errors", 
-            "rx_fifo_errors", 
-            "rx_frame_errors", 
-            "rx_length_errors",    
+            "rx_crc_errors",
+            "rx_dropped",
+            "rx_errors",
+            "rx_fifo_errors",
+            "rx_frame_errors",
+            "rx_length_errors",
             "rx_missed_errors",
             "rx_over_errors",
             "tx_aborted_errors",
@@ -107,7 +107,7 @@ class IF:
             screen.addstr('\n')
         except curses.error:
             pass
-            
+
     def __str__(self):
         return self.name
 
@@ -116,7 +116,7 @@ class IF:
             return self.stats[key]
         else:
             return -1
-        
+
 
 class Ifaces(list):
     def __init__(self,sys_path='/sys/class/net'):
@@ -129,7 +129,7 @@ class Ifaces(list):
 
     def rescan(self):
 #       map(self.remove,filter(bool, self))
-       d=[f for f in os.listdir(self.sys_path) if stat.S_ISDIR(os.stat(os.path.join(self.sys_path,f)).st_mode)] 
+       d=[f for f in os.listdir(self.sys_path) if stat.S_ISDIR(os.stat(os.path.join(self.sys_path,f)).st_mode)]
        new_ifaces=set(map(str,d))-set(map(str,self))
        if new_ifaces:
             map (self.append, map(lambda i: IF(self.sys_path,i), new_ifaces))
@@ -192,7 +192,7 @@ def ask_delay(screen,olddelay):
         newdelay=olddelay
     screen.timeout(newdelay)
     return newdelay
-        
+
 
 def main(stdscr):
     curses.use_default_colors()
