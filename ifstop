@@ -189,7 +189,7 @@ def ask_delay(screen,olddelay):
         if newdelay==0:
             newdelay=1
     except:
-        newdelay=olddelay
+        newdelay=1000
     screen.timeout(newdelay)
     return newdelay
 
